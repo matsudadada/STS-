@@ -41,6 +41,8 @@ export default function Features() {
             
             <p className="text-neutral-600 text-lg leading-relaxed mb-12">
               Shaping essentials, discovered through travel and activity.
+              <br/>
+              地元のスケーターの先輩が行っていたシルクスクリーンやミシンなどのものづくりに強く影響を受け、スケートボードで得た感覚や視点、各地での経験を制作に反映しています。
             </p>
             
             <dl className="space-y-10">
