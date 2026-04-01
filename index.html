@@ -1,50 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My React App</title>
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  <script src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
-</head>
-
-<body>
-<div id="container"></div>
-  <script type="text/babel">
-    'use strict';
-    {
-      const Menu = (props)=>{
-        console.log(props);
-        return(
-          <li className="py-2 border m-2 p-2 rounded hover:bg-gray-50 cursor-pointer">{props.name}</li>
-        )
-      }
-      const App = () =>{
-      return(
-        <>
-      <div className="flex justify-center items-center mt-5">
-        <h1 className="bg-blue-100 w-1/4 p-6 h-20 text-center text-ml font-bold rounded-xl">Menu</h1>
-        </div>
-          <div className="flex justify-center items-center mt-5 ">
-            <ul className="bg-white p-4 rounded-lg shadow-md w-1/3 mt-4 border border-gray-300">
-              <Menu name='牛丼'/>
-              <Menu name='カレー'/>
-              <Menu name='サラダ'/>
-            </ul>
-      </div>
-
-      <div className="flex justify-center items-center mt-5">
-        <p>合計:0円</p>
-      </div>
-</>
-      );
-    };
-      const container = document.querySelector('#container');
-      const root = ReactDOM.createRoot(container);
-      root.render(<App />);
-    }
-  </script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tmp-app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
