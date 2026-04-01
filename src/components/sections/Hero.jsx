@@ -3,7 +3,7 @@ import bagHero from '../../assets/images/bag-hero.jpg';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-white flex flex-col justify-end pb-32 sm:pb-48">
+    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-white flex flex-col justify-center sm:justify-end pb-20 sm:pb-48 pt-32 sm:pt-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 

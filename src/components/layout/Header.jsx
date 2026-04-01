@@ -15,7 +15,7 @@ export default function Header() {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-lg border-b border-neutral-200 py-4 shadow-sm' : 'bg-transparent py-6'}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-2xl sm:text-4xl font-black text-neutral-950 tracking-tighter leading-[1.1] mb-6 mix-blend-normal" style={{ fontFamily: '' }}>
+          <span className="text-xl sm:text-3xl font-black text-neutral-950 tracking-tighter leading-[1.1] mix-blend-normal">
             STS? Susono Take Sewing
           </span>
         </div>
