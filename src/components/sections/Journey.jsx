@@ -122,23 +122,36 @@ export default function Journey() {
         {/* Scroll Container */}
         <div ref={containerRef} className="relative md:flex md:gap-16 pt-8 md:pt-0">
 
-          {/* Sticky Visual Column (Left) */}
-          <div className="w-full md:w-1/2 md:h-[calc(100vh-120px)] md:sticky md:top-20 flex flex-col justify-center py-6 md:py-0 z-10">
-            <div className="relative aspect-[4/5] sm:aspect-[4/3] md:aspect-[4/5] w-full max-w-lg mx-auto overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/80 shadow-2xl group transition-all duration-700">
+          {/* Sticky Visual Column (Left on desktop, Top on mobile) */}
+          <div className="w-full md:w-1/2 h-[42vh] md:h-[calc(100vh-120px)] sticky top-[68px] md:top-20 flex flex-col justify-center py-4 md:py-0 z-30 bg-neutral-900">
+            <div className="relative aspect-[4/5] w-full max-w-lg mx-auto overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 shadow-2xl group transition-all duration-700 flex items-center justify-center">
+
+              {/* Ambient Blurred Backgrounds (atmospheric glow for aspect fill) */}
+              {steps.map((step, idx) => (
+                <img
+                  key={`blur-${step.id}`}
+                  src={step.image}
+                  alt=""
+                  className={`absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 transition-all duration-1000 ease-in-out ${
+                    activeStep === idx ? 'opacity-25 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                  }`}
+                />
+              ))}
 
               {/* Overlay Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/60 z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 z-10 pointer-events-none" />
 
-              {/* Steps images */}
+              {/* Steps images in foreground (Fully shown with contain to prevent cropping) */}
               {steps.map((step, idx) => (
                 <img
                   key={step.id}
                   src={step.image}
                   alt={step.alt}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${activeStep === idx
+                  className={`absolute inset-0 m-auto max-w-[96%] max-h-[96%] object-contain transition-all duration-1000 ease-in-out ${
+                    activeStep === idx
                       ? 'scrollytelling-img-active'
                       : 'scrollytelling-img-inactive pointer-events-none'
-                    }`}
+                  }`}
                 />
               ))}
 
@@ -146,8 +159,9 @@ export default function Journey() {
               {steps.map((step, idx) => (
                 <div
                   key={`hotspots-${step.id}`}
-                  className={`absolute inset-0 z-20 transition-all duration-700 ${activeStep === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
+                  className={`absolute inset-0 z-20 transition-all duration-700 ${
+                    activeStep === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
                 >
                   {step.hotspots?.map((hotspot, hIdx) => (
                     <div
@@ -156,19 +170,21 @@ export default function Journey() {
                       style={{ top: hotspot.y, left: hotspot.x }}
                     >
                       {/* Pulsing Dot */}
-                      <span className="relative flex h-5 w-5 items-center justify-center">
+                      <span className="relative flex h-5 w-5 items-center justify-center cursor-pointer">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white border border-neutral-950"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white border border-neutral-950 shadow-md"></span>
                       </span>
 
                       {/* Tooltip Card */}
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 bg-neutral-950/90 backdrop-blur-md border border-neutral-800 text-white rounded-lg p-2.5 shadow-xl opacity-0 scale-95 group-hover/hotspot:opacity-100 group-hover/hotspot:scale-100 transition-all duration-300 pointer-events-none z-30">
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 bg-neutral-950/95 backdrop-blur-md border border-neutral-800 text-white rounded-lg p-2.5 shadow-xl opacity-0 scale-95 group-hover/hotspot:opacity-100 group-hover/hotspot:scale-100 transition-all duration-300 pointer-events-none z-30">
                         <div className="text-xs font-bold text-white uppercase tracking-wider mb-0.5">
                           {hotspot.label}
                         </div>
-                        <div className="text-[10px] text-neutral-400 font-light leading-snug">
-                          {hotspot.detail}
-                        </div>
+                        {hotspot.detail && (
+                          <div className="text-[10px] text-neutral-450 font-light leading-snug">
+                            {hotspot.detail}
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -176,12 +192,12 @@ export default function Journey() {
               ))}
 
               {/* Step indicator on image */}
-              <div className="absolute bottom-6 left-6 z-20 bg-neutral-950/60 backdrop-blur-md border border-neutral-800/80 px-4 py-2 rounded-full flex items-center gap-3">
-                <span className="text-xl font-display font-black text-white tracking-wider">
+              <div className="absolute bottom-4 left-4 z-20 bg-neutral-950/70 backdrop-blur-md border border-neutral-800/80 px-3.5 py-1.5 rounded-full flex items-center gap-2.5">
+                <span className="text-base font-display font-black text-white tracking-wider">
                   {steps[activeStep].stepNum}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-700"></span>
-                <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-widest">
+                <span className="w-1 h-1 rounded-full bg-neutral-600"></span>
+                <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-widest">
                   {steps[activeStep].id}
                 </span>
               </div>
@@ -227,22 +243,18 @@ export default function Journey() {
                   {step.subtitle}
                 </h4>
 
-                {/* Image under title for MOBILE layout only */}
-                <div className="md:hidden my-6 aspect-[4/3] w-full overflow-hidden rounded-xl relative border border-neutral-800">
-                  <img src={step.image} alt={step.alt} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent pointer-events-none" />
-                </div>
-
                 <p className="text-neutral-400 text-sm sm:text-base leading-relaxed tracking-wide mb-6 font-light">
                   {step.desc}
                 </p>
 
                 {/* Translation portion */}
-                <div className="border-l border-neutral-800 pl-4 py-1.5 bg-neutral-950/20 rounded-r-md">
-                  <p className="text-neutral-500 text-xs sm:text-sm font-light italic leading-relaxed">
-                    {step.translation}
-                  </p>
-                </div>
+                {step.translation && (
+                  <div className="border-l border-neutral-800 pl-4 py-1.5 bg-neutral-950/20 rounded-r-md">
+                    <p className="text-neutral-500 text-xs sm:text-sm font-light italic leading-relaxed">
+                      {step.translation}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
