@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Hero from '../components/sections/Hero';
-import Features from '../components/sections/Features';
-import Gallery from '../components/sections/Gallery';
+import Journey from '../components/sections/Journey';
 import CTA from '../components/sections/CTA';
 import Footer from '../components/layout/Footer';
 
@@ -12,8 +11,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Features />
-        <Gallery />
+        <Journey />
         <CTA />
       </main>
       <Footer />

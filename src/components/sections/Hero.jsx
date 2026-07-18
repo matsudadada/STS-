@@ -11,7 +11,7 @@ export default function Hero() {
           alt="STS?"
           className="w-full h-full object-cover object-center translate-y-8 sm:translate-y-0 opacity-100 scale-105 animate-[pulse_15s_ease-in-out_infinite_alternate]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-transparent" />
       </div>
 

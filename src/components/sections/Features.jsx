@@ -1,5 +1,5 @@
 import React from 'react';
-import bagDetail from '../../assets/images/bag-detail.jpg';
+import bagDetail from '../../assets/images/DSC_24122.jpg';
 
 export default function Features() {
   const features = [

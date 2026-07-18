@@ -1,7 +1,7 @@
 import React from 'react';
-import gallery1 from '../../assets/images/gallery-1.jpg';
-import gallery2 from '../../assets/images/gallery-2.jpg';
-import gallery3 from '../../assets/images/gallery-3.jpg';
+import gallery1 from '../../assets/images/DSC_24122.jpg';
+import gallery2 from '../../assets/images/gallery-2   .jpg';
+import gallery3 from '../../assets/images/IMG_2072.jpg';
 
 export default function Gallery() {
   return (

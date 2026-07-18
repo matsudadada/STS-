@@ -21,8 +21,8 @@ export default function Header() {
         </div>
         
         <nav className="hidden md:flex gap-8 items-center">
-          <a href="#features" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 transition-colors">Concept</a>
-          <a href="#gallery" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 transition-colors">Details</a>
+          <a href="#journey" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 transition-colors">Story</a>
+          <a href="#onlinestore" className="text-sm font-medium text-neutral-600 hover:text-neutral-950 transition-colors">Store</a>
         </nav>
 
         <div className="flex items-center gap-4">
